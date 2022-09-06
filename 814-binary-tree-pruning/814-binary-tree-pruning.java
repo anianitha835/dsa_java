@@ -17,6 +17,8 @@ class Solution {
     public TreeNode pruneTree(TreeNode root) {
         if(root==null) return null;
        return dfs(root)?null:root;
+        
+         
     }
     public boolean dfs(TreeNode root){
         if(root==null) 
