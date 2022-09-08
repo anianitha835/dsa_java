@@ -27,13 +27,14 @@ class Solution {
         int ans=0;
         Queue<Pair> q=new LinkedList<>();
         q.offer(new Pair(root,0));
-        int min = q.peek().id;
         int first=0,last=0;
+        int min = q.peek().id;
+        
         while(!q.isEmpty()){
             int len = q.size();
             for(int i=0;i<len;i++){
                 TreeNode curr =q.peek().node;
-                int curr_id=q.peek().id - min;
+                int curr_id=q.peek().id - last;
                 q.poll();
                 if(i==0) first=curr_id;
                 if(i==(len-1)) last= curr_id;
