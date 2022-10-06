@@ -6,18 +6,12 @@ class TimeMap {
     }
     
     public void set(String key, String value, int timestamp) {
-        if(hm.containsKey(key)){
-            TreeMap<Integer,String> m=hm.get(key);
-            m.put(timestamp,value);
+        if(!hm.containsKey(key)){
+             hm.put(key,new TreeMap<Integer,String>());
         }
-        else{
-             TreeMap<Integer,String> m=new TreeMap<>();
-            m.put(timestamp,value);
-            hm.put(key,m);
+            hm.get(key).put(timestamp,value);
         }
-        
-        
-    }
+       
     
     public String get(String key, int timestamp) {
         if(hm.containsKey(key)){
