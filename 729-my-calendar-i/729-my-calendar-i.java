@@ -1,26 +1,27 @@
+class Pair{
+    int st;
+    int en;
+    public Pair(int start,int end){
+        this.st=start;
+        this.en=end;
+        
+    }
+}
 class MyCalendar {
-    Map<Integer,Integer> tm;
+    ArrayList<Pair> al;
 
     public MyCalendar() {
-        tm=new TreeMap<>();
-        
+       al=new ArrayList<>();
     }
     
     public boolean book(int start, int end) {
-        tm.put(start,tm.getOrDefault(start,0)+1);
-        tm.put(end,tm.getOrDefault(end,0)-1);
-        
-        int sum=0;
-        for(int i:tm.values()){
-            sum+=i;
-            if(sum>1){
-                tm.put(start,tm.getOrDefault(start,0)-1);
-                 tm.put(end,tm.getOrDefault(end,0)+1);
-                return false;
-            }
-        }
-            return true;
+        for(Pair i:al){
+          if(start<i.en && end>i.st) return false;
             
+            
+        }
+        al.add(new Pair(start,end));
+      return true;
         
     }
 }
