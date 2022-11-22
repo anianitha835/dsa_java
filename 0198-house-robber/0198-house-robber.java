@@ -4,17 +4,18 @@ class Solution {
         int n=nums.length;
         int dp[]=new int[n];
         Arrays.fill(dp,-1);
-        return helper(n-1,nums,dp);
+        return helper(nums,dp,n);
     }
-    private int helper(int ind,int arr[],int dp[]){
-        if(ind==0) return arr[ind];
-        if(ind<0) return 0;
-        
-        if(dp[ind]!=-1) return dp[ind];
-        int rob=arr[ind]+helper(ind-2,arr,dp);
-        int notRob = helper(ind-1,arr,dp);
-         dp[ind]=Math.max(rob,notRob);
-        return dp[ind];
+    private int helper(int arr[],int dp[],int n){
+        dp[0]=arr[0];
+      
+       
+        for(int i=1;i<arr.length;i++){
+            int val=arr[i];
+            if(i>1) val+=dp[i-2];
+            dp[i]=Math.max(val,dp[i-1]);
+        }
+        return dp[n-1];
     }
    
 }
