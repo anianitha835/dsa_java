@@ -2,7 +2,7 @@ class Solution {
   
     public int rob(int[] nums) {
         int n=nums.length;
-        int dp[]=new int[n+1];
+        int dp[]=new int[n];
         Arrays.fill(dp,-1);
         return helper(n-1,nums,dp);
     }
@@ -13,8 +13,8 @@ class Solution {
         if(dp[ind]!=-1) return dp[ind];
         int rob=arr[ind]+helper(ind-2,arr,dp);
         int notRob = helper(ind-1,arr,dp);
-        return dp[ind]=Math.max(rob,notRob);
-        
+         dp[ind]=Math.max(rob,notRob);
+        return dp[ind];
     }
    
 }
