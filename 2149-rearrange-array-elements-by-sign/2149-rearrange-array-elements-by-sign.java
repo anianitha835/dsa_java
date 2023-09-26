@@ -3,16 +3,16 @@ class Solution {
         int s=nums.length;
         int ans[]=new int[s];
         int p=0,n=0;
-        int idx=0;
-        while(p<s&&n<s){
-            while(nums[p]<0)
-                p++;
-            while(nums[n]>0)
-                n++;
-            ans[idx++]=nums[p];
-            ans[idx++]=nums[n];
-            p++;
-            n++;
+        int idx1=0,idx2=1;
+        for(int i:nums){
+            if(i>0){
+                ans[idx1]=i;
+                idx1+=2;
+            }
+            if(i<0){
+                ans[idx2]=i;
+                idx2+=2;
+            }
         }
         
     
